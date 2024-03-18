@@ -4,7 +4,7 @@
 # There's a bug (https://github.com/okonet/lint-staged/issues/1164#issuecomment-1177561594) in lint-staged
 # that displays all the output when running through a script.
 # this is a workaround
-exec >/dev/tty 2>&1
+# exec >/dev/tty 2>&1
 
 cd app
 npx lint-staged
