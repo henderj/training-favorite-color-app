@@ -1,0 +1,50 @@
+{
+	"info": {
+		"_postman_id": "868867bc-aac9-428b-9743-164cf7acfecf",
+		"name": "training-fav-color-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Healthcheck",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8d424273-7cac-44a1-9d4e-bcb6622ad121",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body is correct\", function () {",
+							"    const body = pm.response.json()",
+							"    pm.expect(body).to.not.be.null",
+							"    pm.expect(body).to.have.property(\"status\")",
+							"    pm.expect(body.status).to.equal(\"pass\")",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{context}}/health",
+					"host": [
+						"{{context}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
