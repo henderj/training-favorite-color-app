@@ -13,10 +13,18 @@ describe('color route unit tests', () => {
 
   describe('GET /color/{byu_id}', () => {
     test('valid response', async () => {
+      await app.inject({
+        url: '/color/123456789',
+        method: 'PUT',
+        payload: {
+          color: 'blue'
+        }
+      })
       const res = await app.inject({
         url: '/color/123456789'
       })
       expect(res.statusCode).toEqual(200)
+      expect(res.json()).toEqual({ color: 'blue' })
     })
   })
 
@@ -43,12 +51,14 @@ describe('color route unit tests', () => {
     })
   })
 
-  describe('GET /colors', () => {
+  describe('GET /color', () => {
     test('valid response', async () => {
       const res = await app.inject({
-        url: '/colors'
+        url: '/color'
       })
       expect(res.statusCode).toEqual(200)
+      // expect the response to be an array of colors
+      expect(res.json()).toBeInstanceOf(Array)
     })
   })
 })

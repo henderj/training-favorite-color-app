@@ -6,4 +6,4 @@ export const ColorSchema = Type.Object({
 })
 
 // Typescript type built from the above schema to be used in the code
-export type Color = Static<typeof ColorSchema>
+export type ColorObject = Static<typeof ColorSchema>
