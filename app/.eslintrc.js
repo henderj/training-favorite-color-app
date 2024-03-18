@@ -6,9 +6,5 @@ module.exports = {
   parserOptions: {
     project: './tsconfig.eslint.json'
   },
-  ignorePatterns: [
-    'jest.config.ts',
-    'dist',
-    'node_modules'
-  ]
+  ignorePatterns: ['jest.config.ts', 'dist', 'node_modules']
 }
