@@ -71,12 +71,19 @@ const color: FastifyPluginAsync = async (fastifyApp, opts): Promise<void> => {
     {
       schema: {
         response: {
-          200: Type.Array(ColorSchema)
+          200: Type.Array(
+            Type.Object({ id: Type.String(), color: Type.String() })
+          )
         }
       }
     },
     async (request, reply) => {
-      await reply.send(Array.from(colors.values()))
+      const allColors = Array.from(colors).map(([id, color]) => ({
+        id,
+        color: color.color
+      }))
+
+      await reply.send(allColors)
     }
   )
 }
